@@ -84,6 +84,22 @@ ul li {
 .message, .refmessage {
   padding-bottom: 1em;
 }
+.chat-form {
+  width: 100%;
+  position: relative;
+}
+.send-msg-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: green;
+  color: white;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+}
 .nick {
   float: left;
   width: 16em;
@@ -238,3 +254,4 @@ img {
     border: none;
   }
 }
+

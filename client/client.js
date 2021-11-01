@@ -633,6 +633,21 @@ $('#chatinput').onkeydown = function (e) {
   }
 }
 
+$('#send_msg_btn').onclick = function(e) {
+  // Submit message
+  var text = $("#chatinput").value
+  if (text != '') {
+    send({ cmd: 'chat', text: text });
+    $("#chatinput").value = ""
+
+    lastSent[0] = text;
+    lastSent.unshift("");
+    lastSentPos = 0;
+
+    updateInputSize();
+  }
+}
+
 function updateInputSize() {
   var atBottom = isAtBottom();
 
