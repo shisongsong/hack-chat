@@ -100,6 +100,18 @@ ul li {
   align-items: center;
   padding: 5px 10px;
 }
+.file-input {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: orange;
+  color: white;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+}
 .nick {
   float: left;
   width: 16em;

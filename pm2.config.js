@@ -14,7 +14,24 @@ module.exports = {
     env_production: {
       NODE_ENV: 'production'
     }
-  }, {
+  },
+  {
+    name      : 'picgo-server',
+    node_args : '',
+    script    : '/home/azureuser/github/picgo-server/bin/www',
+    instances: 1,
+    autorestart: true,
+    max_memory_restart: '2G',
+    exec_mode: 'fork',
+    watch     : false,
+    env: {
+      NODE_ENV: 'development'
+    },
+    env_production: {
+      NODE_ENV: 'production'
+    }
+  },
+  {
     name: 'hackchat-httpd',
     script: './node_modules/http-server/bin/http-server',
     args: './client -p 3000 -o',
@@ -29,5 +46,6 @@ module.exports = {
     env_production: {
       NODE_ENV: 'production'
     }
-  }]
+  }
+  ]
 };

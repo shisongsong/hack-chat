@@ -4,6 +4,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
+  <meta name="referrer" content="no-referrer">
   <title>hack.chat</title>
   <link rel="manifest" href="manifest.json">
 
@@ -32,6 +33,7 @@
         <form id="chatform" class="message">
           <textarea id="chatinput" type="text" autocomplete="off" autofocus></textarea>
         </form>
+        <input id="file_input" type="file" class="file-input" />
         <button id="send_msg_btn" class="send-msg-btn">SEND</button>
       </div>
     </div>
@@ -86,7 +88,7 @@
       <ul id="users"></ul>
     </div>
   </nav>
-  <script src="client.js"></script>
+  <script src="client.js" type="module"></script>
 </body>
 
 </html>

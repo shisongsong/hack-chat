@@ -36,10 +36,12 @@ var markdownOptions = {
   }
 };
 
+let img_path = 'imgs/android-icon-144x144.png'
+
 var md = new Remarkable('full', markdownOptions);
 
 // image handler
-var allowImages = false;
+var allowImages = true;
 var imgHostWhitelist = [
   'i.imgur.com',
   'imgur.com',
@@ -52,7 +54,7 @@ function getDomain(link) {
 }
 
 function isWhiteListed(link) {
-  return imgHostWhitelist.indexOf(getDomain(link)) !== -1;
+  return true //imgHostWhitelist.indexOf(getDomain(link)) !== -1;
 }
 
 md.renderer.rules.image = function (tokens, idx, options) {
@@ -64,10 +66,12 @@ md.renderer.rules.image = function (tokens, idx, options) {
     var alt = ' alt="' + (tokens[idx].alt ? Remarkable.utils.escapeHtml(Remarkable.utils.replaceEntities(Remarkable.utils.unescapeMd(tokens[idx].alt))) : '') + '"';
     var suffix = options.xhtmlOut ? ' /' : '';
     var scrollOnload = isAtBottom() ? ' onload="window.scrollTo(0, document.body.scrollHeight)"' : '';
-    return '<a href="' + src + '" target="_blank" rel="noreferrer"><img' + scrollOnload + imgSrc + alt + title + suffix + '></a>';
+    //return '<a href="' + src + '" target="_blank" rel="noreferrer"><img' + scrollOnload + imgSrc + alt + title + suffix + '></a>';
+    return '<img' + scrollOnload + imgSrc + alt + title + suffix + '/>';
   }
 
-  return '<a href="' + src + '" target="_blank" rel="noreferrer">' + Remarkable.utils.escapeHtml(Remarkable.utils.replaceEntities(src)) + '</a>';
+  //return '<a href="' + src + '" target="_blank" rel="noreferrer">' + Remarkable.utils.escapeHtml(Remarkable.utils.replaceEntities(src)) + '</a>';
+  return Remarkable.utils.escapeHtml(Remarkable.utils.replaceEntities(src))
 };
 
 md.renderer.rules.link_open = function (tokens, idx, options) {
@@ -648,6 +652,11 @@ $('#send_msg_btn').onclick = function(e) {
   }
 }
 
+
+$('#file_input').onchange = function(e) {
+  console.log(e)
+}
+
 function updateInputSize() {
   var atBottom = isAtBottom();
 
@@ -664,6 +673,10 @@ function updateInputSize() {
 $('#chatinput').oninput = function () {
   updateInputSize();
 }
+
+$('#chatinput').addEventListener('paste', function(e) {
+  console.log(e.clipboardData)
+})
 
 updateInputSize();
 
@@ -915,3 +928,5 @@ if (myChannel == '') {
 } else {
   join(myChannel);
 }
+
+export {}
